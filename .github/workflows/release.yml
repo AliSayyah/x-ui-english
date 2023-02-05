@@ -55,7 +55,7 @@ jobs:
       - name: package
         run: tar -zcvf x-ui-linux-amd64.tar.gz x-ui
       - name: Upload to release
-        uses: actions/upload-release-asset@v1
+        uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
         with:
