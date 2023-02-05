@@ -1,3 +1,4 @@
+[![Release X-ui](https://github.com/AliSayyah/x-ui-english/actions/workflows/release.yml/badge.svg)](https://github.com/AliSayyah/x-ui-english/actions/workflows/release.yml)
 # X-UI ENGLISH VERSION 
 [For X-UI FARSI VERSION](README-fa.md)
 
