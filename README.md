@@ -35,7 +35,7 @@ kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [hossin
 # Single Command Install & upgrade
 
 ````
-bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/AliSayyah/x-ui-english/master/install.sh)
 ````
 
 ## Manual install & upgrade
@@ -45,7 +45,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 sudo su
 cd
 ````
-2. Then download the latest compressed package from https://github.com/NidukaAkalanka/x-ui-english/releases/latest, generally choose `amd64` architecture
+2. Then download the latest compressed package from https://github.com/AliSayyah/x-ui-english/releases/latest, generally choose `amd64` architecture
 3. Run the following commands respectively:
 
 > If your server cpu architecture is not `amd64`, replace `*` in the command with another architecture
@@ -95,7 +95,7 @@ The script has 3 built-in SSL certificate application functions. Using a sub-dom
 To use this method to apply for a certificate, your server's IP addres being correctly pointed to a domain or subdomain that you own is the only requirement. (Acme.sh script's 3rd option)
 
 - ### 2nd and 3rd Methods (Use if the above one fails. Would not work for Freenom free TLDs)
-This is not beginner frienly as much as the first one. To use this method, all of the follwoing prerequisites should be met:
+This is not beginner-friendly as much as the first one. To use this method, all of the follwoing prerequisites should be met:
 - Knowing the Cloudflare registered email address
 - Knowing the Cloudflare Global API Key
 - Having domain name has been resolved to the current server through cloudflare
@@ -147,10 +147,10 @@ There is almost nothing to explain abount Multi-User thing. You will have separa
 - Ubuntu 16+
 - Debian 8+
 
-## Telegram Bot Setup Guie (Currently, only for V0.2)
+## Telegram Bot Setup Guide (Currently, only for V0.2)
 X-UI English supports daily traffic notification, panel and sercer login reminder and other functions through Telegram bot.
 
-**Bot Fuctions**
+**Bot Functions**
 - Inbounds traffic usage
 - Panel login reminder
 - Server SSH login reminder
@@ -159,7 +159,7 @@ X-UI English supports daily traffic notification, panel and sercer login reminde
 - Daily summery at a pre-defined time
 And more to come.....
 
-Follow these steps correclty to activate X-UI English Telegram Bot:
+Follow these steps correctly to activate X-UI English Telegram Bot:
 1. Head to [Botfather bot](https://t.me/BotFather). Start it and send /newbot command. Follow the Bot's instruvtions for setting a name and username for your bot. Upon a successful new bot creation, you'll see a message like follows. which contains your API key. Keep it somewhere safer. You'll need it later.
 
 ![](media/Botfather.PNG)
@@ -173,7 +173,7 @@ Follow these steps correclty to activate X-UI English Telegram Bot:
 ### Telegram Bot Timing Format (Crontab Guuide) 
 
 Reference Syntax:
-- `*/30 * * * *` Notift every 30 minutes, every hour
+- `*/30 * * * *` Notify every 30 minutes, every hour
 - `30 * * * * *` Notify at the 30s of each point
 - `@hourly`      hourly notifications
 - `@daily`       Daily notification (00:00 AM)
@@ -181,10 +181,10 @@ Reference Syntax:
 
 More details about Crontab [here](https://support-acquia.force.com/s/article/360004224494-Cron-time-string-format)
 ## Note for Beginner Devs
-Hey Beginner Developer! Appreciate your intrest on playing the codes with this repository. I have seen many people who are not much familiar with none of the languages used here, but still need to do some modifications such as translating the UIs to their native language, modifying telegram bot functions and etc... But after they are done with all of these code modifications, some of them having hard times converting their code into a binary. So they contact me and I have to repeatedly tell them the same procedure. So, here's how you can do it by yourself.
-- Head to `Your fork repository link`/actions . Enable Github Actions if it isn't yet.
-- Click on Relese X-ui under All workflows
-- Finally, click Run workflow twice. Wait untill the workflow run finishes. Once finished, you will find a release packages with your modifications at `Your fork repository link`/releases
+Hey Beginner Developer! Appreciate your interest on playing the codes with this repository. I have seen many people who are not much familiar with none of the languages used here, but still need to do some modifications such as translating the UIs to their native language, modifying telegram bot functions and etc... But after they are done with all of these code modifications, some of them having hard times converting their code into a binary. So they contact me and I have to repeatedly tell them the same procedure. So, here's how you can do it by yourself.
+- Head to `Your fork repository link`/actions . Enable GitHub Actions if it isn't yet.
+- Click on Release X-ui under All workflows
+- Finally, click Run workflow twice. Wait until the workflow run finishes. Once finished, you will find a release packages with your modifications at `Your fork repository link`/releases
  
 If you are looking to modify Telegram Bot functions, the Bot's code lives at `/web/service/telegram.go`
 
@@ -199,7 +199,7 @@ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/w
 ### Fixed on 0.2 --
 - Multi-user IDs for Vmess and Vless 
 - Lack of Telegram bot implementation 
-- Release packages being much heavier in size 
+- Release packages being much heavier 
 - Download traffic not being monitored
 ### Fixed on 0.2.1 --
 - Download data not being calculated
@@ -208,6 +208,6 @@ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/w
 - IP limitation not being worked
 - Minor bugs with Docker installation 
 ### Fixed on 0.2.1.1 --
-- Error while swithcing Xray version
+- Error while switching Xray version
 ### Fixed on 0.2.1.2 --
 - ip.gs error causing IP scraping errors
