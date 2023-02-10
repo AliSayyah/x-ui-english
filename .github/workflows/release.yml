@@ -2,19 +2,14 @@ name: Release X-ui
 on:
   push:
     tags:
-      - "*"
+      - "v*"
   workflow_dispatch:
 permissions:
   contents: write
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    outputs:
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
 
   linuxamd64build:
     name: build x-ui amd64 version
-    needs: release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
