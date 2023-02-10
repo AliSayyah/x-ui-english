@@ -35,7 +35,7 @@ kind a fork from [taffychan's x-ui](https://github.com/taffychan/x-ui) + [hossin
 # Single Command Install & upgrade
 
 ````
-bash <(curl -Ls https://raw.githubusercontent.com/AliSayyah/x-ui-english/master/install.sh)
+curl https://raw.githubusercontent.com/AliSayyah/x-ui-english/main/install.sh > install.sh && sudo bash install.sh
 ````
 
 ## Manual install & upgrade
@@ -71,7 +71,13 @@ systemctl restart x-ui
 curl -fsSL https://get.docker.com | sh
 ````
 
-2. Install x-ui
+2. Build your own image
+
+```shell
+https://raw.githubusercontent.com/AliSayyah/x-ui-english/main/Dockerfile > Dockerfile_x-ui
+docker build -f Dockerfile_x-ui -t x-ui:latest .
+````
+3. Install x-ui
 
 ```shell
 mkdir x-ui && cd x-ui
@@ -79,14 +85,10 @@ docker run -itd --network=host \
     -v $PWD/db/:/etc/x-ui/ \
     -v $PWD/cert/:/root/cert/ \
     --name x-ui --restart=unless-stopped \
-    enwaiax/x-ui:latest
+    x-ui:latest
 ````
 
-> Build your own image
 
-```shell
-docker build -t x-ui .
-````
 
 ## SSL certificate application
 
@@ -211,3 +213,7 @@ If you are looking to modify Telegram Bot functions, the Bot's code lives at `/w
 - Error while switching Xray version
 ### Fixed on 0.2.1.2 --
 - ip.gs error causing IP scraping errors
+
+### Changed on 1.0.3 --
+
+- updated xray-core repository. you can now switch to the newest `xray-core` versions.
