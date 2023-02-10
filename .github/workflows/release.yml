@@ -45,6 +45,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
         with:
           files: x-ui-linux-amd64.tar.gz
-          name: x-ui-linux-amd64.tar.gz
-          tag_name: ${{ github.ref }}
   
