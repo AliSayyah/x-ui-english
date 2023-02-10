@@ -19,7 +19,7 @@ yellow() {
     echo -e "\033[33m\033[01m$1\033[0m"
 }
 
-REGEX=("debian" "ubuntu" "centos|red hat|kernel|oracle linux|alma|rocky" "'amazon linux'" "fedora", "alpine")
+REGEX=("debian" "ubuntu" "centos|red hat|kernel|oracle linux|alma|rocky" "'amazon linux'" "fedora" "alpine")
 RELEASE=("Debian" "Ubuntu" "CentOS" "CentOS" "Fedora" "Alpine")
 PACKAGE_UPDATE=("apt-get update" "apt-get update" "yum -y update" "yum -y update" "yum -y update" "apk update -f")
 PACKAGE_INSTALL=("apt -y install" "apt -y install" "yum -y install" "yum -y install" "yum -y install" "apk add -f")
@@ -112,14 +112,14 @@ download_xui(){
 
     
     if [ $# == 0 ]; then
-        last_version=$(curl -Ls "https://api.github.com/repos/NidukaAkalanka/x-ui-english/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') || last_version=$(curl -sm8 https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/main/config/version >/dev/null 2>&1)
+        last_version=$(curl -Ls "https://api.github.com/repos/AliSayyah/x-ui-english/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') || last_version=$(curl -sm8 https://raw.githubusercontent.com/AliSayyah/x-ui-english/main/config/version >/dev/null 2>&1)
         if [[ -z "$last_version" ]]; then
             red "Detecting the X-UI version failed, please make sure your server can connect to the Github API"
             rm -f install.sh
             exit 1
         fi
         yellow "The latest version of X-UI is detected: $ {last_version}, starting installation..."
-        wget -N --no-check-certificate -O /usr/local/x-ui-linux-$(archAffix).tar.gz https://github.com/NidukaAkalanka/x-ui-english/releases/download/${last_version}/x-ui-linux-$(archAffix).tar.gz
+        wget -N --no-check-certificate -O /usr/local/x-ui-linux-$(archAffix).tar.gz https://github.com/AliSayyah/x-ui-english/releases/download/${last_version}/x-ui-linux-$(archAffix).tar.gz
         if [[ $? -ne 0 ]]; then
             red "Download the X-UI failure, please make sure your server can connect and download files from github"
             rm -f install.sh
@@ -127,9 +127,9 @@ download_xui(){
         fi
     else
         last_version=$1
-        url="https://github.com/NidukaAkalanka/x-ui-english/releases/download/${last_version}/x-ui-linux-$(archAffix).tar.gz"
+        url="https://github.com/AliSayyah/x-ui-english/releases/download/${last_version}/x-ui-linux-$(archAffix).tar.gz"
         yellow "Starting installation x-ui $1"
-        wget -N --no-check-certificate -O /usr/local/x-ui-linux-$(archAffix).tar.gz ${url}
+        wget -N --no-check-certificate -O /usr/local/x-ui-linux-"$(archAffix)".tar.gz "${url}"
         if [[ $? -ne 0 ]]; then
             red "Download X-UI V $ 1 Failure, please make sure this version exists"
             rm -f install.sh
@@ -138,14 +138,14 @@ download_xui(){
     fi
     
     cd /usr/local/
-    tar zxvf x-ui-linux-$(archAffix).tar.gz
-    rm -f x-ui-linux-$(archAffix).tar.gz
+    tar zxvf x-ui-linux-"$(archAffix)".tar.gz
+    rm -f x-ui-linux-"$(archAffix)".tar.gz
     
     cd x-ui
-    chmod +x x-ui bin/xray-linux-$(archAffix)
+    chmod +x x-ui bin/xray-linux-"$(archAffix)"
     cp -f x-ui.service /etc/systemd/system/
     
-    wget -N --no-check-certificate https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/main/x-ui.sh -O /usr/bin/x-ui
+    wget -N --no-check-certificate https://raw.githubusercontent.com/AliSayyah/x-ui-english/main/x-ui.sh -O /usr/bin/x-ui
     chmod +x /usr/local/x-ui/x-ui.sh
     chmod +x /usr/bin/x-ui
 }
@@ -165,8 +165,8 @@ panel_config() {
             [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
         fi
     done
-    /usr/local/x-ui/x-ui setting -username ${config_account} -password ${config_password} >/dev/null 2>&1
-    /usr/local/x-ui/x-ui setting -port ${config_port} >/dev/null 2>&1
+    /usr/local/x-ui/x-ui setting -username "${config_account}" -password "${config_password}" >/dev/null 2>&1
+    /usr/local/x-ui/x-ui setting -port "${config_port}" >/dev/null 2>&1
 }
 
 install_xui() {
@@ -196,7 +196,7 @@ install_xui() {
     systemctl stop x-ui >/dev/null 2>&1
     
     install_base
-    download_xui $1
+    download_xui "$1"
     
     cd
     mkdir /etc/x-ui-english #makidng a directory to import the backup
@@ -267,4 +267,4 @@ show_login_info(){
     echo -e "Password: ${GREEN}$config_password ${PLAIN}"
 }
 
-install_xui $1
+install_xui "$1"
